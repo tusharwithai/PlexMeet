@@ -18,4 +18,4 @@ PlexMeet is a real-time, bi-directional sign language translation tool designed 
 - [ ] **Phase 5:** NLP Grammar Correction
 
 ## 👨‍💻 Author
-Developed by **Tushar** (@tusharwithai) at SRM Institute of Science & Technology.
+Developed by **Tushar** (@tusharwithai)
