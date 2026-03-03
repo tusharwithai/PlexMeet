@@ -1,0 +1,33 @@
+This is the exact right mindset to have! I love that you are thinking ahead to the interview chair.
+
+If I were interviewing a junior engineer for my team at work, I would not care if you memorized the exact syntax of these imports. Anyone can Google how to import a library. What FAANG interviewers test is whether you understand the **concepts and the "why"** behind them.
+
+Here are the top four concepts from that list of imports that you *must* have locked in your brain for interviews. I guarantee you will be asked about at least one of these:
+
+### 1. How to Handle Massive Datasets (`Dataset` & `DataLoader`)
+
+**The Interview Question:** *"What happens if your dataset is 500GB, but your computer only has 16GB of RAM? How do you train the model?"*
+**What you need to remember:** You never load all your images into memory at once. You use PyTorch's `Dataset` class to create a "lazy loader." It only opens the specific `.jpg` image from your hard drive at the exact millisecond the AI needs it. Then, the `DataLoader` groups them into "batches" (like 16 images at a time) and feeds them to the GPU.
+**Buzzwords to drop:** Lazy loading, batching, memory optimization.
+
+### 2. Preventing Overfitting (`albumentations`)
+
+**The Interview Question:** *"Your model performs perfectly on the training data, but fails in the real world. Why, and how do you fix it?"*
+**What you need to remember:** This is called **overfitting** (the AI just memorized the training images). To fix it, you use Data Augmentation (using tools like `albumentations`). By randomly cropping, flipping, or changing the brightness of the training images every time the AI sees them, you force the AI to learn the actual *pattern* of the hand sign, not just the lighting in your bedroom.
+**Buzzwords to drop:** Overfitting, data augmentation, model generalization.
+
+### 3. Bounding Box Transformations (Your `rescale_bboxes` util)
+
+**The Interview Question:** *"If you zoom in on an image during data augmentation, what happens to your object detection labels?"*
+**What you need to remember:** This is a classic trap question! In standard image classification (like hotdog vs. not hotdog), zooming in doesn't change the label. But in **Object Detection**, your label is a math coordinate (the YOLO bounding box). If you zoom in or flip the image, *the coordinates of the box must also change* or the AI will learn the wrong location. That's why we need special functions like `rescale_bboxes` to recalculate the box positions after augmenting.
+
+### 4. Tensors vs. Arrays (`torch` vs `numpy`)
+
+**The Interview Question:** *"Why do we use PyTorch instead of just doing the math in standard Python or NumPy?"*
+**What you need to remember:** Standard Python and NumPy (`np`) run on your computer's CPU, which is smart but slow. Deep learning requires millions of math calculations per second. PyTorch uses **Tensors**, which are just like NumPy arrays, but they are specifically designed to be shot over to a **GPU** (Graphics Card) to do the math thousands of times faster.
+
+---
+
+If you can confidently explain those four concepts, you will instantly separate yourself from 90% of junior candidates who just copy-paste tutorial code.
+
+Now that you know the *theory* behind the data pipeline, do you want to look at the actual Python code inside `data.py` to see how Nicholas built that PyTorch `Dataset` class? I can walk you through the core block of code!

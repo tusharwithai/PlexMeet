@@ -1,6 +1,0 @@
-numpy==1.23.5
-protobuf==3.20.3
-opencv-contrib-python==4.8.1.78
-mediapipe==0.10.9
-scikit-learn
-matplotlib
